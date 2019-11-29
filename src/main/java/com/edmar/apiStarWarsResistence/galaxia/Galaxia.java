@@ -9,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import lombok.Data;
+
 @Entity
+@Data
 @SequenceGenerator(name="seq_galaxia", sequenceName="seq_galaxia", allocationSize=1)
 public class Galaxia implements Serializable {
 	

@@ -15,7 +15,10 @@ import javax.persistence.SequenceGenerator;
 import com.edmar.apiStarWarsResistence.galaxia.Galaxia;
 import com.edmar.apiStarWarsResistence.inventario.Inventario;
 
+import lombok.Data;
+
 @Entity
+@Data
 @SequenceGenerator(name="seq_rebelde", sequenceName="seq_rebelde", allocationSize=1)
 public class Rebelde implements Serializable{
 	
@@ -39,5 +42,8 @@ public class Rebelde implements Serializable{
 	@OneToOne
 	@JoinColumn(name="id_inventario")
 	private Inventario inventario;
+	
+	@Column
+	private boolean traidor;
 	
 }
