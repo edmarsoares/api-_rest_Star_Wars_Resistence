@@ -1,12 +1,14 @@
 package com.edmar.apiStarWarsResistence.galaxia.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edmar.apiStarWarsResistence.galaxia.Galaxia;
 import com.edmar.apiStarWarsResistence.galaxia.service.GalaxiaService;
-
+/**
+ * Usado caso seja necessário a api fornecer recursos de uma galaxia 
+ * @author edmar
+ *
+ */
 @RestController
 @RequestMapping("api/galaxia")
 public class GalaxiaController {
@@ -37,8 +43,8 @@ public class GalaxiaController {
 		return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<?> findByID(final Long id){
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findByID(@PathVariable final Long id){
 		final Optional<Galaxia> galaxia = this.galaxiaService.findBYId(id);
 		
 		return ResponseEntity.ok(galaxia);

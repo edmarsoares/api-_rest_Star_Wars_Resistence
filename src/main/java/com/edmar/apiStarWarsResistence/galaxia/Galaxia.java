@@ -10,15 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode
 @SequenceGenerator(name="seq_galaxia", sequenceName="seq_galaxia", allocationSize=1)
 public class Galaxia implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_galaxia")
 	private Long id;
+	
+	@Column
+	private String nome;
 	
 	@Column
 	private double latitude;

@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.edmar.apiStarWarsResistence.exception.BasicException;
 /**
  * Classe responsável por fornecer metódos comuns a todos que precisem realizar ações gerais 
  * @author edmar
@@ -36,7 +38,10 @@ public abstract class GenericService<T extends Serializable, ID> {
 	
 	@Transactional(readOnly=true)
 	public Optional<T> findBYId(ID id) {
-		return this.repository.findById(id);
+		Optional<T> entity = this.repository.findById(id);
+		entity.orElseThrow(()-> new BasicException("A entidade de identificador "+ id + " Não foi encontrada") );
+		
+		return entity;
 	}
 	
 	@Transactional(readOnly=true)
