@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edmar.apiStarWarsResistence.rebelde.Rebelde;
 import com.edmar.apiStarWarsResistence.relatorio.Relatorio;
+import com.edmar.apiStarWarsResistence.relatorio.dto.RelatorioListingDto;
 import com.edmar.apiStarWarsResistence.relatorio.service.RelatorioService;
 
 import io.swagger.annotations.Api;
@@ -23,13 +23,17 @@ public class RelatorioController {
 	
 	@ApiOperation(
 			value="gerar relatórios", 
-			response=Relatorio.class, 
+			response=RelatorioListingDto.class, 
 			notes="endpoint responsável por gerá relatórios informando porcentagens e médias dos recursos dos rebeldes")
 	@GetMapping
-	public ResponseEntity<Relatorio> gerandoRelatorio(){
+	public ResponseEntity<RelatorioListingDto> gerandoRelatorio(){
+		
 		Relatorio relatorio = this.relatorioService.gerandoRelatorio();
 		
-		return ResponseEntity.ok(relatorio);
+		RelatorioListingDto relatorioDto = new RelatorioListingDto();
+		relatorioDto.convertToDto(relatorio);
+		
+		return ResponseEntity.ok(relatorioDto);
 	}
 
 }
