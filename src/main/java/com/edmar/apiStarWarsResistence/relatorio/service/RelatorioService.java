@@ -22,7 +22,11 @@ public class RelatorioService {
 	private RebeldeService rebeldeService;
 	@Autowired
 	private ItemService itemService;
-
+	
+	/**
+	 * Método responsável por gerar um {@link Relatorio} com porcentagens e médias  
+	 * @return
+	 */
 	public Relatorio gerandoRelatorio() {
 
 		Long totalTraidores = this.rebeldeService.countTraidores();

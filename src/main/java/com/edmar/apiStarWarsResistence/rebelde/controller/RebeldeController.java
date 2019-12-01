@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.edmar.apiStarWarsResistence.galaxia.Galaxia;
 import com.edmar.apiStarWarsResistence.inventario.item.Item;
 import com.edmar.apiStarWarsResistence.rebelde.Rebelde;
+import com.edmar.apiStarWarsResistence.rebelde.dto.RebeldeCreateDTO;
 import com.edmar.apiStarWarsResistence.rebelde.event.RebeldeTraidorEvent;
 import com.edmar.apiStarWarsResistence.rebelde.service.RebeldeService;
 
@@ -71,7 +72,8 @@ public class RebeldeController {
 			response=Rebelde.class, 
 			notes="salva um rebelde na base dados")
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Rebelde rebelde) {
+	public ResponseEntity<?> save(@RequestBody RebeldeCreateDTO rebeldeDto) {
+		Rebelde rebelde = rebeldeDto.convertFromDTO();
 		this.rebeldeService.save(rebelde);
 
 		return ResponseEntity.ok().build();
@@ -112,7 +114,7 @@ public class RebeldeController {
 	
 	@ApiOperation(
 			value="realizar negociação", 
-			notes="endpoint responsável por realizar a negociação. è preciso informar o id do rebelde "
+			notes="endpoint responsável por realizar a negociação. É preciso informar o id do rebelde "
 					+ " que quer negociar e o id do que pode aceitar ou não a negociação") 
 	@PostMapping("/negociador/{idNegociador}/negociavel/{idNegociavel}")
 	public void Negociar(@PathVariable final long idNegociador, @PathVariable final long idNegociavel, @RequestBody Item item) {

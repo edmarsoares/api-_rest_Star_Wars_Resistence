@@ -25,7 +25,7 @@ public class RebeldeService extends GenericService<Rebelde, Long> {
 	@Override
 	@Transactional
 	public void save(Rebelde rebelde) {
-
+		
 		rebelde.getInventario().gerarTotalPontos();
 		this.rebeldeRepository.save(rebelde);
 	}

@@ -12,6 +12,12 @@ public enum TipoItem implements PontosPorItem {
 			return pontosTotais;
 		}
 
+		@Override
+		public int getPontosIniciais() {
+			// TODO Auto-generated method stub
+			return 4;
+		}
+
 	},
 	MUNICAO("munição") {
 
@@ -21,6 +27,12 @@ public enum TipoItem implements PontosPorItem {
 
 			int pontosTotais = qtd * 3;
 			return pontosTotais;
+		}
+
+		@Override
+		public int getPontosIniciais() {
+			// TODO Auto-generated method stub
+			return 3;
 		}
 
 	},
@@ -34,6 +46,12 @@ public enum TipoItem implements PontosPorItem {
 			return pontosTotais;
 		}
 
+		@Override
+		public int getPontosIniciais() {
+			// TODO Auto-generated method stub
+			return 2;
+		}
+
 	},
 	COMIDA("comida") {
 
@@ -43,6 +61,12 @@ public enum TipoItem implements PontosPorItem {
 
 			int pontosTotais = qtd * 1;
 			return pontosTotais;
+		}
+
+		@Override
+		public int getPontosIniciais() {
+			// TODO Auto-generated method stub
+			return 1;
 		}
 
 	};

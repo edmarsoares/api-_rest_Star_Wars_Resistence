@@ -23,7 +23,7 @@ public class RelatorioController {
 	
 	@ApiOperation(
 			value="gerar relatórios", 
-			response=Rebelde.class, 
+			response=Relatorio.class, 
 			notes="endpoint responsável por gerá relatórios informando porcentagens e médias dos recursos dos rebeldes")
 	@GetMapping
 	public ResponseEntity<Relatorio> gerandoRelatorio(){
