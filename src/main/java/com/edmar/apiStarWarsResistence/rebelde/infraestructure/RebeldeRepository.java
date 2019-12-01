@@ -14,4 +14,5 @@ public interface RebeldeRepository extends JpaRepository<Rebelde, Long>, Rebelde
 	
 	@Query("SELECT (COUNT(*)) FROM Rebelde r WHERE r.traidor = false")
 	Long countTotalRebeldesFieis();
+	
 }

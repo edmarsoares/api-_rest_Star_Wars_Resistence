@@ -24,6 +24,8 @@ public class Item {
 
 	@Column
 	private Integer quantidade;
+	@Column
+	private Integer pontos;
 
 	@Enumerated(EnumType.STRING)
 	@Column
