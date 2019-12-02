@@ -78,6 +78,11 @@ public class Relatorio {
 		return parcial / total;
 	}
 	
+	/**
+	 * Apartir desse método é que é gerado as médias de cada recurso
+	 * Ex.: Arma: 2 por rebelde, comida: 5 por rebelde
+	 * @param dadosMedia
+	 */
 	public void gerarMedia(DadosMediaInventario dadosMedia) {
 		this.strategy.get(dadosMedia.getTipoItem()).apply(dadosMedia);
 	}
