@@ -46,7 +46,7 @@ public class Inventario {
 		}
 
 		Integer pontos = this.itens.stream()
-				.map(item -> this.totalPontos = item.getTipoItem().gerarPontos(item))
+				.map(item -> item.getTipoItem().gerarPontos(item))
 				.reduce((total, soma) -> total + soma).get();
 		
 		this.totalPontos = pontos;
